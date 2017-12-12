@@ -427,6 +427,8 @@ public class ExcelFrame extends javax.swing.JFrame {
                 while (importRowIterator.hasNext()) {
                     i = 0;
                     Row nextRow = importRowIterator.next();
+                    
+                    System.out.println(nextRow.getRowNum());
 
                     String hnr = "";
                     String str = "";
@@ -476,7 +478,7 @@ public class ExcelFrame extends javax.swing.JFrame {
                                 break;
                             case 2:
                                 //Name1
-                                if (importCell != null && importCell.getCellType() != Cell.CELL_TYPE_BLANK) {
+                                if (importCell != null && importCell.getCellType() != Cell.CELL_TYPE_BLANK && importCell.getCellType() == Cell.CELL_TYPE_STRING) {
                                     String name1 = importCell.getStringCellValue();
                                     if (name1.equals(" ") || name1.equals("  ") || name1.equals("   ")) {
                                         if (ExcelFrame.DELETE_WRONG_ENTRIES == true && alreadyDeleted == false) {
@@ -683,6 +685,7 @@ public class ExcelFrame extends javax.swing.JFrame {
                                                 provinceCodeCell_pc = nextRow.getCell(8);
                                                 if (provinceCodeCell_pc != null && provinceCodeCell_pc.getCellType() == Cell.CELL_TYPE_STRING) {
                                                     //System.out.println(isoCode2 + " " + provinceCodeCell.getStringCellValue());
+                                                    //System.out.println(nextRow.getRowNum());
                                                     String pic2 = (provinceCodeCell_pc.getStringCellValue().split(" "))[0];
                                                     //System.out.println((rowcount + 2) + " " + pic2);
 
